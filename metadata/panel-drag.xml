@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<wayfire>
+	<plugin name="panel-drag">
+		<_short>Panel drag</_short>
+		<_long>Expose an IPC method to start interactive window moves from a panel.</_long>
+		<category>Desktop</category>
+	</plugin>
+</wayfire>
