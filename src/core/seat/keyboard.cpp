@@ -96,6 +96,7 @@ void wf::keyboard_t::setup_listeners()
     {
         auto kbd  = static_cast<wlr_keyboard*>(data);
         auto seat = wf::get_core().get_current_seat();
+        wf::get_core_impl().input->locked_mods = this->get_locked_mods();
 
         mwlr_keyboard_modifiers_event event;
         event.time_msec = wf::get_current_time();
