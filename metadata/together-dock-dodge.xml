@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<wayfire>
+	<plugin name="together-dock-dodge">
+		<_short>Together Dock Dodge</_short>
+		<_long>An implementation of the Together Dock Dodge protocol.</_long>
+		<category>Utility</category>
+	</plugin>
+</wayfire>
