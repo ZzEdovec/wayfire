@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<protocol name="together_dock_dodge_v1">
+  <copyright>
+    Copyright 2026 Together
+
+    Permission is hereby granted, free of charge, to any person obtaining a
+    copy of this software and associated documentation files (the "Software"),
+    to deal in the Software without restriction, including without limitation
+    the rights to use, copy, modify, merge, publish, distribute, sublicense,
+    and/or sell copies of the Software, and to permit persons to whom the
+    Software is furnished to do so, subject to the following conditions:
+
+    The above copyright notice and this permission notice shall be included in
+    all copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+    FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+    DEALINGS IN THE SOFTWARE.
+  </copyright>
+
+  <interface name="together_dock_dodge_manager_v1" version="1">
+    <description summary="track whether windows obscure a surface">
+      Allows a client to register a wl_surface and receive updates whenever a
+      window from the compositor overlaps and obscures that surface.
+    </description>
+
+    <request name="destroy" type="destructor"/>
+
+    <request name="get_dock_dodge_surface">
+      <description summary="create an obscuration tracker for a surface">
+        Register a wl_surface which should be monitored for obscuration.
+      </description>
+      <arg name="id" type="new_id" interface="together_dock_dodge_surface_v1"/>
+      <arg name="surface" type="object" interface="wl_surface"/>
+    </request>
+  </interface>
+
+  <interface name="together_dock_dodge_surface_v1" version="1">
+    <description summary="obscuration state for a registered surface">
+      Emits the current obscuration state for the registered surface.
+    </description>
+
+    <enum name="state">
+      <entry name="clear" value="0" summary="the surface is not obscured"/>
+      <entry name="obscured" value="1" summary="the surface is obscured by a window"/>
+    </enum>
+
+    <request name="destroy" type="destructor"/>
+
+    <event name="obscured">
+      <description summary="surface obscuration state changed">
+        Sent whenever the compositor detects that the tracked surface became
+        obscured or unobscured.
+      </description>
+      <arg name="state" type="uint" enum="state"/>
+    </event>
+  </interface>
+</protocol>
