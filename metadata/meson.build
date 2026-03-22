@@ -44,6 +44,7 @@ install_data('wayfire-shell.xml', install_dir: conf_data.get('PLUGIN_XML_DIR'))
 install_data('xdg-activation.xml', install_dir: conf_data.get('PLUGIN_XML_DIR'))
 install_data('session-lock.xml', install_dir: conf_data.get('PLUGIN_XML_DIR'))
 install_data('security-context-v1.xml', install_dir: conf_data.get('PLUGIN_XML_DIR'))
+install_data('together-dock-dodge.xml', install_dir: conf_data.get('PLUGIN_XML_DIR'))
 
 devenv = environment()
 devenv.append('WAYFIRE_PLUGIN_XML_PATH', meson.current_source_dir())
