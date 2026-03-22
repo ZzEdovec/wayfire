@@ -34,7 +34,8 @@ server_protocols = [
     'gtk-shell.xml',
     'wlr-layer-shell-unstable-v1.xml',
     'wlr-output-power-management-unstable-v1.xml',
-    'kde-appmenu.xml'
+    'kde-appmenu.xml',
+    'together-dock-dodge-v1.xml'
 ]
 
 wl_protos_src = []
@@ -54,5 +55,6 @@ wf_protos = declare_dependency(
 	sources: wl_protos_headers,
 )
 
-# Install wayfire-shell protocol, so that other projects can find it
+# Install custom Wayfire protocols, so that other projects can find them
 install_data('wayfire-shell-unstable-v2.xml', install_dir: join_paths(pkgdatadir, 'unstable'))
+install_data('together-dock-dodge-v1.xml', install_dir: pkgdatadir)
